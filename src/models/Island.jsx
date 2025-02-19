@@ -35,6 +35,7 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
 
     lastX.current = clientX;
   };
+
   const handlePointerUp = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -60,10 +61,12 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
   const handleKeyDown = (e) => {
     if (e.key === "ArrowLeft") {
       if (!isRotating) setIsRotating(true);
-      islandRef.current.rotation.y += 0.01 * Math.PI;
+      islandRef.current.rotation.y += 0.0125 * Math.PI;
+      rotationSpeed.current = 0.0125;
     } else if (e.key === "ArrowRight") {
       if (!isRotating) setIsRotating(true);
       islandRef.current.rotation.y -= 0.01 * Math.PI;
+      rotationSpeed.current = -0.0125;
     }
   };
 
